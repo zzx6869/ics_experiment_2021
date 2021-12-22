@@ -1,0 +1,24 @@
+ .ORIG x3000
+        ADD  R1, R1, #1
+        ADD  R2, R2, #1
+        ADD  R7, R7, #2
+        ADD  R0, R0, #-2
+        BRnz #9
+        LD   R4, NUMBERA
+LOOP    ADD  R5, R1, R1
+        ADD  R1, R2, #0
+        ADD  R2, R7, #0
+        ADD  R7, R5, R7
+        AND  R7, R7, R4
+        ADD  R0, R0, #-1
+        BRp  LOOP
+        BRnzp #2
+        BRz #1
+        ADD  R7, R7, #-1
+        HALT
+        NUMBERA .FILL x03FF
+        NUMBER1 .FILL x03A2
+        NUMBER2 .FILL x02D6
+        NUMBER3 .FILL x02D2
+        NUMBER4 .FILL x0356
+        .END
